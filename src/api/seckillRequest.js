@@ -34,7 +34,7 @@ const pollOrderStr = (id) => {
     const timer = setInterval(async () => {
       try {
         const res = await makePayment(id)
-        if (res.order_str) {
+        if (res.order_str && res.order_str !== 'pending') {
           clearInterval(timer)
           resolve(res.order_str)
         }
